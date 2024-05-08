@@ -3,41 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GIF Page</title>
+    <title>Rotating Text with Static Image</title>
     <style>
-        .container {
-            position: relative;
+        .text-container {
             text-align: center;
+            font-size: 24px;
             font-family: Arial, sans-serif;
-            margin-top: 50px; /* Added margin for better spacing */
+            margin-top: 50px;
         }
-        .top-text {
-            position: absolute;
-            top: 28%;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 18px;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 10px;
-            max-width: 28%; /* Adjust the width as needed */
-            margin: 0 auto; /* Center the text box horizontally */
+        .image-container {
+            text-align: center;
+            margin-top: 20px;
         }
-        .bottom-text {
-            color: black;
-            font-size: 18px;
-            max-width: 40%; /* Adjust the width as needed */
-            margin: 20px auto; /* Added margin for better spacing and centering */
+        #rotatingImage {
+            max-width: 100%;
+            height: auto;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="https://media.giphy.com/media/d3yxg15kJppJilnW/giphy.gif" alt="Time Clock GIF">
-        <div class="top-text">I can’t handle the passage of time and so I cling to the idea that just for me, it stands still.</div>
-        <div class="bottom-text">That minutes and hours and days and years are fickle constructs, meant to satiate my body but not my mind. I pretend that time doesn't pass, because if it has not moved then I can pretend that she is not gone and that they all still want to be my friend and that my childhood hasn’t slipped from my grasp and that I am okay with it all.</div>
+    <div class="text-container">
+        <span id="rotatingText"></span>
     </div>
+    <div class="image-container">
+       <img src="calender.jpg" alt="Image">
+
+    </div>
+
+    <script>
+        // Array of phrases to rotate
+        const phrases = [
+            "Okay with the dizzying spiral.",
+            "Okay with unyielding march towards nothingness.",
+            "Okay with calendars that have to change from November to December, year in and year out."
+        ];
+
+        const rotatingText = document.getElementById('rotatingText');
+        const staticImage = document.getElementById('staticImage');
+        let index = 0;
+
+        // Function to rotate the text
+        function rotateText() {
+            rotatingText.textContent = phrases[index];
+            index = (index + 1) % phrases.length;
+        }
+
+        // Initial call to rotate text
+        rotateText();
+
+        // Rotate text every 1.5 seconds (1500 milliseconds)
+        setInterval(rotateText, 1500);
+    </script>
 </body>
 </html>
+
+
 
 
